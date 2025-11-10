@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8"  />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"  />
-    <title>Deeply - Die App für echte Gespräche</title>
-    <meta name="description" content="Deeply verbindet dich über tiefgründige Fragen mit Menschen, die wirklich zuhören. Tagesfrage, DeepTalk mit Freunden, Matching & Reflextion."  />
-    <meta name="theme-color" content="#0f172a"  />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-      <style>
-      :root{
-        --bg:#0b1020;        /* Tiefes Navy */
-        --card:#11162a;      /* Kartenhintergrund */
-        --muted:#9aa4b2;     /* Sekundärtext */
-        --text:#e6e8ec;      /* Primärtext */
-        --brand1:#6dd5ed;    /* Verlauf hell */
-        --brand2:#cc99ff;    /* Verlauf dunkel */
-        --accent:#9bd3c7;    /* Akzent */
-        --radius;18px;
-        }
-        
-      </style>
+<head>
+  <meta charset="utf-8"  />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"  />
+  <title>Deeply - Die App für echte Gespräche</title>
+  <meta name="description" content="Deeply verbindet dich über tiefgründige Fragen mit Menschen, die wirklich zuhören. Tagesfrage, DeepTalk mit Freunden, Matching & Reflextion."  />
+  <meta name="theme-color" content="#0f172a"  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+    :root{
+      --bg:#0b1020;        /* Tiefes Navy */
+      --card:#11162a;      /* Kartenhintergrund */
+      --muted:#9aa4b2;     /* Sekundärtext */
+      --text:#e6e8ec;      /* Primärtext */
+      --brand1:#6dd5ed;    /* Verlauf hell */
+      --brand2:#cc99ff;    /* Verlauf dunkel */
+      --accent:#9bd3c7;    /* Akzent */
+      --radius;18px;
+    }
+  *{box-sizing:border-box}
+    html,body{margin:0;background:radial-gradient(1200px 800px at 70% -10%, #182042 0%, var(--bg) 55%) fixed; font-family:Inter,system-ui,-apple-system,Segoe UI, roboto,Helvetica,Arial; color:var(--text)}
+    /* Mobile-first Container */
+      .phone{max-width:420px;margin:0 auto;min-height:100dvh;padding-bottom:64px}
+      header{padding:24px 18px 0}
+      .badge{display:inline-flex;align-items:center;gap:.5ch;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.06);backdrop-filter:saturate(130%) blur(6px);font-size:12px;color:var(--muted)}
+      -hero{padding:18px;display:flex;flex-direction:column;align-items:center;text-align:center}
+      h1{font-size:28px;line-height:1,1;margin:16px 0 6px; font-weight:800;letter-spacing:-.015em}
+      .sub{color:var(--muted);font-size:14px}
+      .cta{display:flex;gap:10px;margin:18px 0 8px}
+      .btn{flex:1;display:inline-flex;justify-content:center:align-items:center;gap:.6ch;padding:14px 14px;boder:0;border-radius:14px;background:linear-gradient(135deg,var(--brand1),var(--brand2));color:#0b0d14;font-weight:700}
+      .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.12)}
+      .pill{display:inline-flex;gap:.5ch;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);color:var(--muted);font-size:12px}
+    /* Cards */
+      
+    </style>
   </head>
