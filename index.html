@@ -34,6 +34,122 @@
       .btn.secondary{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.12)}
       .pill{display:inline-flex;gap:.5ch;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);color:var(--muted);font-size:12px}
     /* Cards */
-      
+      .section{padding:4px 18px}
+      .card{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;box-shadow:0 6px 24px rgba(0,0,0,.25);}
+      .grid{display:grid;grid-template-columns:1ft;gap:12px}
+      .icon{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(135deg,var(--brand2),var(--brand1));color:#0b0d014;font-weight:900}
+      h2{font-size:18px;margin:4px 0 10px;letter-spacing:.01em}
+      .small{font-size:13px;color:var(--muted)}
+    /* Feature list */
+      .feature{display:flex;gap:12px}
+      .feature h3{margin:2px 0 2px;font-size:15px}
+      .feature p{margin:0;font-size:13px;color:var(--muted)}
+    /* Video */
+      .video{position:relative;overflow:hidden;border-radius:16px}
+      .video::before{content:"";display:block;aspect-ratio:16/9}
+      .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+    /* Accordion */
+      details{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px}
+      details+details{margin-top:8px}
+      summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px}
+      summary::-webkit-details-marker{display:none}
+      .chip{font-size:10px;padding:4px 8px;border-radius:999px;background:rgba(255,255,255,.08);color:var(--muted)}
+    /* Footer */
+      footer{position:sticky;bottom:0;background:linear-gradient(0deg, rgba(11,16,32,1) 20%, rgba(11,16,32,0));padding:16px 18px 18px}
+      .bar{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1),border-radius:16px;padding:10px 12px;display:flex;gap:10px}
+      .bar input{flex:1;background:transparent;border:0;outline:none;color:var(--text)}
+      .bar button{border:0;border-radius:12px;padding:10px 14px;font-weight:700;background:linear-gradient(135deg,var(--brand1),var(--brand2))}
+    /* Utilities */
+      .mt-8{margin-top:8px}.mt-12{margin-top:12px}.mt-16{margin-top:16px}.mt-20{margin-top:20px}
+      .center{text-align:center}
+      a{color:inherit}
     </style>
-  </head>
+</head>
+<body>
+  <main class="phone">
+    <header>
+      <span class="badge">🧠 Deeply • Beta</span>
+    </header>
+
+    <section class="hero">
+      <img class="logo" src="./assets/logo.png" alt="Deeply Logo"/>
+      <h1>Tief reden. Echt fühlen.</h1>
+      <p class="sub">Die App, die dich mit Menschen verbindet, die wirklich zuhören - ohne Likes, Filter oder Fake-Perfektion.</p>
+      <div class="cta">
+        <a class="btn" href="#cta">Jetzt kostenlos starten</a>
+        <a class="btn secondary" href="#video">Pitch ansehen</a>
+      </div>
+      <span class="pill">🔒 Privatsphäre zuerst • Keine öffentlichen Likes</span>
+    </section>
+
+    <!-- Problem -->
+    <section class="section">
+      <div class="card">
+        <div class="feature">
+          <div class="icon">!</div>
+          <div>
+            <h3>Wir reden viel, aber sagen wenig.</h3>
+            <p>Viele fühlen sich trotz Social media einsam und unverstanden. Deeply schafft echte Nähe - mit Fragen, die zählen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lösung & Features -->
+    <section class="section">
+      <div class="grid">
+        <div class="card">
+          <h2>Die Lösung - Echte Gespräche in der Hosentasche</h2>
+          <div class="feature mt-12">
+            <div class="icon">Q</div>
+            <div>
+              <h3>🧩 Tagesfrage</h3>
+              <p>Jeden tag eine inspirierende Frage - z.B.. "Was bedeutet Vertrauen für dich?"</p>
+            </div>
+          </div>
+          <div class="feature mt-12">
+            <div class="icon">👥</div>
+            <div>
+              <h3>💬 DeepTalk mit Freunden</h3>
+              <p>Freunde einladen, Antworten teilen und ins Gespräch kommen.</p>
+            </div>
+          </div>
+          <div class="feature mt-12">
+            <div class="icon">✨</div>
+          <div>
+            <h3>💞 Matching</h3>
+            <p>Antonyme Gespräche mit Menschen, die ähnlich denken.</p>
+          </div>
+        </div>
+        <div class="feature mt-12">
+          <div class="icon">☾</div>
+        <div>
+          <h3>🌙 Reflektionsmodus</h3>
+          <p>Dein geschütztes Tagebuch für Gedanken und Erkenntnisse.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Vorteile auf einen Blick</h2>
+      <ul class="small">
+        <li>• Mehr Nähe zu Freunden</li>
+        <li>• Besseres Selbstverständnis</li>
+        <li>• Sinnvolle Zeit statt endlosem Scrollem</li>
+        <li>• Sicherheit & Privatsphäre</li>
+      </ul>
+    </div>
+
+    <!-- Video -->
+    <div id="videi" class="card">
+      <h2>Pitch-Video (0:45)</h2>
+      <div class="video mt-12">
+        <!-- Ersetze den src mit deinem Youtube-Videos-Link -->
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Deeply Pitch Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscopeY picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- Projektinfos (unauffällige Einbettung aus Project Charter & Pflichtenheft) -->
+        
+    </section>
+</body>
