@@ -88,6 +88,18 @@
     /* ANIMATIONS (lightweight) */
     .fade-up{opacity:0; transform:translate>(10px); transition:opacity .6s ease, transform .6s ease}
     .fade-up.appear{opacity:1; transform:none}
+
+    /* App Shell - phone-like look */
+    .phone{ width:min(420px, 100%); margin:12px; border-radius:28px; border:1px solid rgba(255,255,255,.08); box-shadow:0 20px 60px rgba(0,0,0,.55); overflow:hidden; background:var(--bg); position:relative; }
+    .appbar{ position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:10px; padding: max(12px, env(safe-area-inset-top))16px 10px; background:rgba(11,16,32,.85); backdrop-filter: blur(12px); border-bottom:1px solid rgba(255,255,255,.08); }
+    .appbar.title{ font-weight:800; letter-spacing:.2px }
+    .appbar-cta{ padding:8px 12px; border-radius: 999px; border:1px solid rgba (255,255,255,.16) }
+    .appbar-logo{ width:24px; height:24px; border-radius:6px }
+    .screen{ height: calc(100dvh - 66px - 70px - env(safe-area-inset-tip) - env(safe-area-inset-bottom)); overflow:auto; -webkit-overflow-scrolling:touch; }
+    .tabbar{ position:sticky; bottom:0; z-index:10; display:flex; justify-content:space-around; align-items:center; gap:8px; padding: 8px 10px calc(10px + (safe-area-inset-bottom)); background:rgba(11,16,32,.85); background-filter:; blur(12px); border-top:1px solid rgba(255,255,255,.08); }
+    .tap{ display:flex; flex-direction:column; align-items:center; gap:2px; font-size:12px; colour:var(--muted); text-decoration:none; }
+    .tap .ic{ font-size:20px; line-height:1 }
+    -tap .active{ color: var(--text); font-weight:700 }
   </style>
 
   <link rel="icon" href="Logo.png" sizes="96x96" />
@@ -132,6 +144,18 @@
             </div>
           </div>
         </article>
+      </div>
+    </section>
+
+    <!-- Abschnitt: Die Lösung -->
+    <section class="wrap" id="solution">
+      <h2 class="h2">Echte Gespräche in der Hosentasche.</h2>
+      <p class="p">Deeply bringt dich mit Freunden oder neuen Menschen ins Gespräch - geführt, sicher udn auf Augenhöhe.</p>
+      <div class="list">
+        <div class="chip fade-up">🧩 <strong style="margin-left:6px">Tagesfrage</strong> - Jeden Tag eine inspirierende Frage ("Was bedeutet Vertrauen für dich?")</div>
+        <div class="chip fade-up">💬 <strong style="margin-left:6px">DeepTalk mit Freunden</strong> - Lade ein und beantwortet Fragen gemeinsam.</div>
+        <div class="chip fade-up">💞 <strong style="margin-left:6px">Matching</strong> - Anonyme Gespräche mit Menschen mit ähnlichen Antworten.</div>
+        <div class="chip fade-up">🌙 <strong style="margin-left:6px">Reflektionsmodus</strong> - Dein persönliches Tagebuch nach jedem Gespräch.</div>
       </div>
     </section>
 
@@ -189,7 +213,7 @@
 
     <!-- Abschnitt: Call to Action -->
     <section class="wrap" id="cta">
-      <h2 class="h2">Bereit für echtes Gespräch?</h2>
+      <h2 class="h2">Bereit für echtes?</h2>
       <p class="p">Buche einen Termin für Demo & Fragen - wir freuen uns auf dich.</p>
       <div class="cta-row" style="margin-top:14px">
         <a class="btn" href="https://calendly.com/deinlink" target="_blank" rel="noopener" aria-label="Termin bei Calendly buchen">👉🏼 Buchen Sie einen Termin</a>
@@ -198,30 +222,49 @@
     </section>
   </main>
 
-  <footer class="footer" aria-label="Terminleiste">
-    <div class="wrap">
-      <div class="small">Deeply - Die App für echte Gespräche</div>
-      <a class="btn" href="https://clanendly.com/deinlink" target="_blank" rel="noopener">Termin buchen</a>
-    </div>
-  </footer>
-
+</div><!-- /.screen -->
+  <nav class="tabbar" aria-label="Hauptnavigation">
+    <a class="tab active" href="#home"><span class="ic">🏠</span><span>Home</span></a>
+    <a class="tab" href="#soluction"><span class="ic">✨</span><span>Features</span></a>
+    <a class="tab" href="#video"><span class="ic">🎬</span><span>Video</span></a>
+    <a class="tab" href="#cta"><span class=ic">📅</span><span>Termin</span></a>
+  </nav>
+</div><!-- /.phone -->
+  
   <script>
-    //Fade-up on view
+    const scroller = document.querySelection('.screen');
+    
+    //Fade-up on view within the app screen
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting) e.target.classlist.add('appear'); });
-    } {threshold: 0.15});
+    } {threshold: 0.15, root: scroller});
     document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
 
-    //Smooth scroll for same-page anchors
+    //Smooth in-screen scrolling for anchors links
     document.querSelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click'. (e)=>{
         const id = a.getAttribute('href');
         if(id && id.length>1){
           const el = document.querSelection(id);
-        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        if(el){ e.preventDefault(); scroller.scrollTo({top: el.offsetTop - 8, behavior;'smooth'}); }
         }
       });
     });
+
+    //Activate bottom tab matching the visible section
+    const tabs = Array.from(document.querSelectorAll('.tabbar .tab'));
+    const sections = ['home','solution','video','cta']
+      .map(id => document.getElementById(id))
+      .filter(Boolean);
+    const so = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting)}
+          const hash = '#' + entry.target.id;
+          tabs.forEach(t => t.classList.toogle('active', t.getAttribute('href') ===));
+      }
+    });
+  }, {threshold: 0.6, root: scroller});
+    sections.forEach(s=>so.observe(s));
   </script>
 </body>
 </html>
