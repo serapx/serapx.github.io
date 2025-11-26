@@ -85,20 +85,20 @@
     }
 
     /* ANIMATIONS (lightweight) */
-    .fade-up{opacity:0; transform:translate>(10px); transition:opacity .6s ease, transform .6s ease}
+    .fade-up{opacity:0; transform:translateY(10px); transition:opacity .6s ease, transform .6s ease}
     .fade-up.appear{opacity:1; transform:none}
 
     /* App Shell - phone-like look */
     .phone{ width:min(420px, 100%); margin:12px; border-radius:28px; border:1px solid rgba(255,255,255,.08); box-shadow:0 20px 60px rgba(0,0,0,.55); overflow:hidden; background:var(--bg); position:relative; }
-    .appbar{ position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:10px; padding: max(12px, env(safe-area-inset-top))16px 10px; background:rgba(11,16,32,.85); backdrop-filter: blur(12px); border-bottom:1px solid rgba(255,255,255,.08); }
+    .appbar{ position:sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between; gap:10px; padding: max(12px, env(safe-area-inset-top)) 16px 10px; background:rgba(11,16,32,.85); backdrop-filter: blur(12px); border-bottom:1px solid rgba(255,255,255,.08); }
     .appbar-title{ font-weight:800; letter-spacing:.2px }
     .appbar-cta{ padding:8px 12px; border-radius: 999px; border:1px solid rgba(255,255,255,.16) }
     .appbar-logo{ width:24px; height:24px; border-radius:6px }
     .screen{ height: calc(100dvh - 66px - 70px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); overflow:auto; -webkit-overflow-scrolling:touch; }
-    .tabbar{ position:sticky; bottom:0; z-index:10; display:flex; justify-content:space-around; align-items:center; gap:8px; padding: 8px 10px calc(10px + env(safe-area-inset-bottom)); background:rgba(11,16,32,.85); background-filter: blur(12px); border-top:1px solid rgba(255,255,255,.08); }
+    .tabbar{ position:sticky; bottom:0; z-index:10; display:flex; justify-content:space-around; align-items:center; gap:8px; padding: 8px 10px calc(10px + env(safe-area-inset-bottom)); background:rgba(11,16,32,.85); backdrop-filter: blur(12px); border-top:1px solid rgba(255,255,255,.08); }
     .tap{ display:flex; flex-direction:column; align-items:center; gap:2px; font-size:12px; color:var(--muted); text-decoration:none; }
-    .tap .ic{ font-size:20px; line-height:1 }
-    .tap .active{ color: var(--text); font-weight:700 }
+    .tap.ic{ font-size:20px; line-height:1 }
+    .tap.active{ color: var(--text); font-weight:700 }
   </style>
 
   <link rel="icon" href="Logo.png" sizes="96x96" />
@@ -108,7 +108,7 @@
     <div class="wrap hero-inner">
       <div class="brand">
         <img class="logo" src="Logo.png" alt="Deeply Logo" width="96" height="96" />
-        <div class="title">Tief reden. Echt fühlen. - Willkommen bei Deeply.</div>
+        <div class="title">Tief reden. Echt fühlen. Willkommen bei Deeply.</div>
         <p class="subtitle">Die App, die dich mit Menschen verbindet, die wirklich zuhören.</p>
       </div>
       <div class="cta-row">
@@ -206,7 +206,7 @@
       <h2 class="h2">Pitch-Video</h2>
       <div class="video fade-up" role="region" aria-label="Pitch-Video">
         <!-- Youtube-Link -->
-        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Deeply-Pitch Video" allow="accelermometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in picture; web-share" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Deeply-Pitch Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </section>
 
@@ -240,11 +240,11 @@
     document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
 
     //Smooth in-screen scrolling for anchors links
-    document.querSelectorAll('a[href^="#"]').forEach(a=>{
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', (e)=>{
         const id = a.getAttribute('href');
         if(id && id.length>1){
-          const el = document.querSelector(id);
+          const el = document.querySelector(id);
         if(el){ e.preventDefault(); scroller.scrollTo({top: el.offsetTop - 8, behavior:'smooth'}); }
         }
       });
@@ -259,7 +259,7 @@
       entries.forEach(entry=>{
         if(entry.isIntersecting){
           const hash = '#' + entry.target.id;
-          tabs.forEach(t => t.classList.toogle('active', t.getAttribute('href') ===));
+          tabs.forEach(t => t.classList.toogle('active', t.getAttribute('href') === hash));
       }
     });
   }, {threshold: 0.6, root: scroller});
