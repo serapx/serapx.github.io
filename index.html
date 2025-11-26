@@ -132,6 +132,93 @@
       </div>
     </section>
 
-    
+    <!-- Abschnitt: Vorteile -->
+    <section class="wrap" id="benefits">
+      <h2 class="h2">Vorteile</h2>
+      <div class="cards">
+        <article class="card fade-up">
+          <div class="row">
+            <div class="ico" aria-hidden="true">👥</div>
+            <div>
+              <h3>Mehr Nähe</h3>
+              <p>Vertiefe Beziehung durch Fragen, die zählen.</p>
+            </div>
+          </div>
+        </article>
+        <article class="card fade-up">
+          <div class="row">
+            <div class="ico" aria-hidden="true">🧭</div>
+            <div>
+              <h3>Besseres Selbstverständnis</h3>
+              <p>Reflektiere Antworten und erkenne, was dir wichtig ist.</p>
+            </div>
+          </div>
+        </article>
+        <article class="crad fade-up">
+          <div class="row">
+            <div class="ico" aria-hidden="true">⌛️</div>
+            <div>
+              <h3>Sinnvolle Zeit</h3>
+              <p>Weniger Scrollen, mehr Bedeutung - bewusst statt endlos.</p>
+            </div>
+          </div>
+        </article>
+        <article class="card fade-up">
+          <div class="row">
+            <div class="ico" aria-hidden="true">🔒</div>
+            <div>
+              <h3>Sicherheit & Privatsphäre</h3>
+              <p>Deine Gespräche bleiben bei dir. Anonymes Matching, klare Kontrolle.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Abschnitt Video -->
+    <section class="wrap" id="video">
+      <h2 class="h2">Pitch-Video</h2>
+      <div class="video fade-up" role="region" aria-label="Pitch-Video">
+        <!-- Youtube-Link -->
+        <iframe src="youtube" title="Deeply-Pitch Video" allow="acclermometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in picture; web-share" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- Abschnitt: Call to Action -->
+    <section class="wrap" id="cta">
+      <h2 class="h2">Bereit für echtes Gespräch?</h2>
+      <p class="p">Buche einen Termin für Demo & Fragen - wir freuen uns auf dich.</p>
+      <div class="cta-row" style="margin-top:14px">
+        <a class="btn" href="https://calendly.com/deinlink" target="_blank" rel="noopener" aria-label="Termin bei Calendly buchen">👉🏼 Buchen Sie einen Termin</a>
+        <a class="btn sec" href="#home" aria-label="Zueück nach oben">🔝 Nach oben</a>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer" aria-label="Terminleiste">
+    <div class="wrap">
+      <div class="small">Deeply - Die App für echte Gespräche</div>
+      <a class="btn" href="https://clanendly.com/deinlink" target="_blank" rel="noopener">Termin buchen</a>
+    </div>
+  </footer>
+
+  <script>
+    //Fade-up on view
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classlist.add('appear'); });
+    } {threshold: 0.15});
+    document.querySelectorAll('.fade-up').forEach(el=>io.observe(el));
+
+    //Smooth scroll for same-page anchors
+    document.querSelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click'. (e)=>{
+        const id = a.getAttribute('href');
+        if(id && id.length>1){
+          const el = document.querSelection(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+        }
+      });
+    });
+  </script>
 </body>
+</html>
